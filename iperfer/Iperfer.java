@@ -190,7 +190,8 @@ public class Iperfer
         }
         
         // arg checks
-        if (is_client && is_server)
+        // has to be one of is_client or is_server, but not both or none
+        if (!(is_client ^ is_server))
             exit(CMDLINE_ARG_ERROR);
 
         // port not set or out of range
