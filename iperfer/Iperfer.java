@@ -13,7 +13,7 @@ public class Iperfer
     public static final int MIN_PORT_NUMBER = 1024;
     public static final int MAX_PORT_NUMBER = 65535;
     
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
     
     /** Helper class for parsing integers without exception boilerplate */
     private static final class IntParseResult
@@ -80,7 +80,7 @@ public class Iperfer
             
             // print metrics
             double rate = bytes_sent / (1e6 * time); // mbps
-            System.out.println("sent=" + (bytes_sent / 1000) + " KB" +  "rate=" + rate + " Mbps");
+            System.out.println("sent=" + (bytes_sent / 1000) + " KB " +  "rate=" + rate + " Mbps");
         }
         catch (IOException e)
         {
@@ -104,10 +104,16 @@ public class Iperfer
             
             long start_time = System.currentTimeMillis();
             long bytes_received = 0;
+
+            char[] buffer = new char[1000];
             while (!serverSocket.isClosed())
             {
-                char[] buffer = new char[1000];
-                bytes_received += br.read(buffer);
+                long bytes_read = br.read(buffer);
+                
+                if (bytes_read == -1)
+                    break;
+                else
+                    bytes_received += bytes_read;
             }
             
             long end_time = System.currentTimeMillis();
@@ -122,7 +128,7 @@ public class Iperfer
             
             // print metrics
             double rate = bytes_received / (1e6 * (time_range / 1e3)); // mbps
-            System.out.println("received=" + (bytes_received / 1000) + " KB" +  "rate=" + rate + " Mbps");
+            System.out.println("received=" + (bytes_received / 1000) + " KB " +  "rate=" + rate + " Mbps");
         }
         catch (IOException e)
         {
