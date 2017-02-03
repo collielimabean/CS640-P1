@@ -79,7 +79,7 @@ public class Iperfer
             socket.close();
             
             // print metrics
-            double rate = bytes_sent / (1e6 * time); // mbps
+            double rate = (8 * bytes_sent) / (1e6 * time); // mbps
             System.out.println("sent=" + (bytes_sent / 1000) + " KB " +  "rate=" + rate + " Mbps");
         }
         catch (IOException e)
@@ -127,7 +127,7 @@ public class Iperfer
             serverSocket.close();
             
             // print metrics
-            double rate = bytes_received / (1e6 * (time_range / 1e3)); // mbps
+            double rate = (8 * bytes_received) / (1e6 * (time_range / 1e3)); // mbps
             System.out.println("received=" + (bytes_received / 1000) + " KB " +  "rate=" + rate + " Mbps");
         }
         catch (IOException e)
