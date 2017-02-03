@@ -1,7 +1,6 @@
-import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -54,7 +53,7 @@ public class Iperfer
         try
         {
             Socket socket = new Socket(hostname, port);
-            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
             
             long start_time = System.currentTimeMillis();
             long current_time = start_time;
@@ -66,8 +65,8 @@ public class Iperfer
             
             while (current_time - start_time < time * 1000)
             {
-                char[] empty_buffer = new char[1000];
-                writer.write(empty_buffer);
+                byte[] emptyBuffer = new byte[1000];
+                outputStream.write(emptyBuffer);
                 bytes_sent += 1000;
                 current_time = System.currentTimeMillis();
             }
@@ -75,7 +74,7 @@ public class Iperfer
             if (DEBUG)
                 System.out.println("Client ended at: " + System.currentTimeMillis());
             
-            writer.close();
+            outputStream.close();
             socket.close();
             
             // print metrics
@@ -97,7 +96,7 @@ public class Iperfer
         {
             ServerSocket serverSocket = new ServerSocket(port);
             Socket clientSocket = serverSocket.accept();
-            BufferedReader br = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            DataInputStream inputStream = new DataInputStream(clientSocket.getInputStream());
             
             if (DEBUG)
                 System.out.println("Server connection established!");
@@ -105,11 +104,11 @@ public class Iperfer
             long start_time = System.currentTimeMillis();
             long bytes_received = 0;
 
-            char[] buffer = new char[1000];
+            byte[] byteBuffer = new byte[1000];
             while (!serverSocket.isClosed())
             {
-                long bytes_read = br.read(buffer);
-                
+                long bytes_read = inputStream.read(byteBuffer);
+
                 if (bytes_read == -1)
                     break;
                 else
@@ -122,7 +121,7 @@ public class Iperfer
             if (DEBUG)
                 System.out.println("Server ending....");
             
-            br.close();
+            inputStream.close();
             clientSocket.close();
             serverSocket.close();
             
