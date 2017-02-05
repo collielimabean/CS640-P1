@@ -77,8 +77,10 @@ public class Iperfer
             outputStream.close();
             socket.close();
             
+            long totalTime = current_time - start_time;
+
             // print metrics
-            double rate = (8 * bytes_sent) / (1e6 * time); // mbps
+            double rate = (8 * bytes_sent) / (1e3 * totalTime); // mbps
             System.out.println("sent=" + (bytes_sent / 1000) + " KB " +  "rate=" + rate + " Mbps");
         }
         catch (IOException e)
