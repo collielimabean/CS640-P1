@@ -1,0 +1,7 @@
+From xterm:
+
+root@mininet-vm:~/P1# java Iperfer -s -p 9000
+received=53043 KB rate=17.518949715135 Mbps
+
+root@mininet-vm:~/P1# java Iperfer -c -h 10.0.0.2 -p 9000 -t 20
+sent=53043 KB rate=18.827099693863968 Mbps

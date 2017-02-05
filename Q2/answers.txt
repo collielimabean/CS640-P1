@@ -1,0 +1,27 @@
+Q2:
+
+Expected latency: 
+	= 2 * (delay(L1) + delay(L2) + delay(L3))
+	= 2 * (40 + 10 + 30)
+	= 160 ms
+
+
+Expected throughput:
+	= 20 Mbps (slowest bandwidth)
+
+
+Average RTT:
+h4: 
+RTT avg = 160.993 ms
+
+h1: 
+RTT avg = 161.042 ms
+
+
+Average throughput:
+h1 (server):
+received=55078 KB rate=18.587808479223792 Mbps
+
+h4 (client):
+sent=55078 KB rate=20.432367261766753 Mbps
+

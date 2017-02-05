@@ -1,0 +1,21 @@
+L1:
+mininet> xterm h1 
+xterm> ping -c 20 10.0.0.2
+
+L2:
+mininet> xterm h2
+xterm> ping -c 20 10.0.0.4 
+
+L3:
+mininet> xterm h3
+xterm> ping -c 20 10.0.0.4
+
+L4:
+mininet> xterm h2
+xterm> ping -c 20 10.0.0.5
+
+L5:
+mininet> xterm h3
+xterm> ping -c 20 10.0.0.6
+
+
