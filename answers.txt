@@ -1,29 +1,23 @@
 Q2:
+    Expected latency: 
+        = 2 * (delay(L1) + delay(L2) + delay(L3))
+        = 2 * (40 + 10 + 30)
+        = 160 ms
 
-Expected latency: 
-    = 2 * (delay(L1) + delay(L2) + delay(L3))
-    = 2 * (40 + 10 + 30)
-    = 160 ms
+    Expected throughput:
+        = 20 Mbps (slowest bandwidth)
 
-
-Expected throughput:
-    = 20 Mbps (slowest bandwidth)
-
-
-Average RTT:
-h4: 
-RTT avg = 160.993 ms
-
-h1: 
-RTT avg = 161.042 ms
+    Average RTT:
+        h4 RTT avg = 160.993 ms
+        h1 RTT avg = 161.042 ms
 
 
-Average throughput:
-h1 (server):
-received=55078 KB rate=18.587808479223792 Mbps
+    Average throughput:
+    h1 (server):
+    received=55078 KB rate=18.587808479223792 Mbps
 
-h4 (client):
-sent=55078 KB rate=20.432367261766753 Mbps
+    h4 (client):
+    sent=55078 KB rate=20.432367261766753 Mbps
 
 
 Q3:
@@ -39,16 +33,16 @@ Expected throughput:
 2 pairs (1-4, 7-10)
     Measured latency:
         h1 result
-        rtt min/avg/max/mdev = 160.229/161.078/172.184/2.621 ms
+        rtt avg = 161.078 ms
 
         h7 result
-        rtt min/avg/max/mdev = 160.242/161.259/173.171/2.839 ms
+        rtt avg = 161.259 ms
 
         h4 result
-        rtt min/avg/max/mdev = 160.234/160.898/168.558/1.856 ms
+        rtt avg = 160.898 ms
 
         h10 result
-        rtt min/avg/max/mdev = 160.363/161.102/169.162/2.047 ms
+        rtt avg = 161.102 ms
 
     Measured throughput:
         h4 result
@@ -60,22 +54,22 @@ Expected throughput:
 3 pairs (1-4, 7-10, 8-9):
     Measured latency:
         h1 result
-        rtt min/avg/max/mdev = 160.283/161.028/171.022/2.338 ms
+        rtt avg = 161.028 ms
 
         h7 result
-        rtt min/avg/max/mdev = 160.252/161.131/172.732/2.703 ms
+        rtt avg  = 161.131 ms
 
         h4 result
-        rtt min/avg/max/mdev = 160.341/161.371/174.220/3.008 ms
+        rtt avg  = 161.371 ms
 
         h10 result
-        rtt min/avg/max/mdev = 160.235/161.319/176.142/3.438 ms
+        rtt avg = 161.319 ms
 
         h8 result
-        rtt min/avg/max/mdev = 160.370/161.356/171.193/2.418 ms
+        rtt avg = 161.356 ms
 
         h9 result
-        rtt min/avg/max/mdev = 160.284/160.960/168.597/1.909 ms
+        rtt avg = 160.960 ms
 
 
     Measured throughput:
@@ -104,7 +98,7 @@ Q4
         h5-h6: 40 ms
 
         Reasoning:
-            Should be same?
+            The number of hosts shouldn't affect latency.
 
     Expected throughputs:
         h1-h4: 17.5 Mbps
@@ -118,11 +112,10 @@ Q4
 
     Measured latencies:
         h1-h4:
-        rtt min/avg/max/mdev = 160.275/161.165/170.504/2.357 ms
+        rtt avg = 161.165 ms
 
         h5-h6
-        rtt min/avg/max/mdev = 40.257/41.336/52.400/2.893 ms
-
+        rtt avg = 41.336 ms
 
 
     Measured throughputs:
@@ -137,4 +130,9 @@ Q4
 
         h6 result
         received=160213 KB rate=20.693004407562277 Mbps
+ 
+    Conclusion:
+        The idea was right - there would be some reduction in throughput for both connections.
+        However, it appears there is a larger reduction in throughput than what was predicted.
+ 
  
