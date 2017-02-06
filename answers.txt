@@ -1,0 +1,140 @@
+Q2:
+
+Expected latency: 
+    = 2 * (delay(L1) + delay(L2) + delay(L3))
+    = 2 * (40 + 10 + 30)
+    = 160 ms
+
+
+Expected throughput:
+    = 20 Mbps (slowest bandwidth)
+
+
+Average RTT:
+h4: 
+RTT avg = 160.993 ms
+
+h1: 
+RTT avg = 161.042 ms
+
+
+Average throughput:
+h1 (server):
+received=55078 KB rate=18.587808479223792 Mbps
+
+h4 (client):
+sent=55078 KB rate=20.432367261766753 Mbps
+
+
+Q3:
+
+Expected latency (regardless of # hosts):
+    = 160 ms
+
+Expected throughput:
+    = 10 Mbps (slowest bandwidth / 2, split evenly)
+    --- OR ---
+    = 6.67 Mbps (slowest bandwidth / 3, split evenly)
+
+2 pairs (1-4, 7-10)
+    Measured latency:
+        h1 result
+        rtt min/avg/max/mdev = 160.229/161.078/172.184/2.621 ms
+
+        h7 result
+        rtt min/avg/max/mdev = 160.242/161.259/173.171/2.839 ms
+
+        h4 result
+        rtt min/avg/max/mdev = 160.234/160.898/168.558/1.856 ms
+
+        h10 result
+        rtt min/avg/max/mdev = 160.363/161.102/169.162/2.047 ms
+
+    Measured throughput:
+        h4 result
+        sent=91201 KB rate=11.470200757754405 Mbps
+
+        h10 result
+        sent=69219 KB rate=8.389419143714207 Mbps
+
+3 pairs (1-4, 7-10, 8-9):
+    Measured latency:
+        h1 result
+        rtt min/avg/max/mdev = 160.283/161.028/171.022/2.338 ms
+
+        h7 result
+        rtt min/avg/max/mdev = 160.252/161.131/172.732/2.703 ms
+
+        h4 result
+        rtt min/avg/max/mdev = 160.341/161.371/174.220/3.008 ms
+
+        h10 result
+        rtt min/avg/max/mdev = 160.235/161.319/176.142/3.438 ms
+
+        h8 result
+        rtt min/avg/max/mdev = 160.370/161.356/171.193/2.418 ms
+
+        h9 result
+        rtt min/avg/max/mdev = 160.284/160.960/168.597/1.909 ms
+
+
+    Measured throughput:
+        h1 result
+        received=67037 KB rate=8.2931943649775 Mbps
+
+        h7 result
+        received=37734 KB rate=4.5484570877531345 Mbps
+
+        h4 result
+        sent=67037 KB rate=8.81283070956716 Mbps
+
+        h10 result
+        sent=37734 KB rate=4.72820111206829 Mbps
+
+        h8 result
+        received=52235 KB rate=6.308860606609599 Mbps
+
+        h9 result
+        sent=52235 KB rate=6.943258286948575 Mbps
+
+
+Q4
+    Expected latencies:
+        h1-h4: 160 ms
+        h5-h6: 40 ms
+
+        Reasoning:
+            Should be same?
+
+    Expected throughputs:
+        h1-h4: 17.5 Mbps
+        h5-h6: 22.5 Mbps
+
+        Reasoning:
+            Note that switch 2 is a place of contention. At worst conditions, s2 can have an incoming
+            data rate of 45 Mbps, and a max outgoing 40 Mbps. In order to balance out, let's assume
+            the switch incurs speed reductions equally to each link. In other words, each link gets
+            a net 2.5 Mbps removed. 20 - 2.5 -> 17.5 for h1-h4, and 25 - 2.5 = 22.5 for h5-h6.
+
+    Measured latencies:
+        h1-h4:
+        rtt min/avg/max/mdev = 160.275/161.165/170.504/2.357 ms
+
+        h5-h6
+        rtt min/avg/max/mdev = 40.257/41.336/52.400/2.893 ms
+
+
+
+    Measured throughputs:
+        h1 result
+        sent=127016 KB rate=16.83808640031816 Mbps
+
+        h4 result
+        received=127016 KB rate=16.491300960789406 Mbps
+
+        h5 result
+        sent=160213 KB rate=21.23186509185482 Mbps
+
+        h6 result
+        received=160213 KB rate=20.693004407562277 Mbps
+ 
