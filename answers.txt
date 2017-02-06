@@ -1,26 +1,28 @@
-Q2:
-    Expected latency: 
-        = 2 * (delay(L1) + delay(L2) + delay(L3))
-        = 2 * (40 + 10 + 30)
-        = 160 ms
+Q2)
+Expected latency: 
+	= 2 * (delay(L1) + delay(L2) + delay(L3))
+	= 2 * (40 + 10 + 30)
+	= 160 ms
 
-    Expected throughput:
-        = 20 Mbps (slowest bandwidth)
+Expected throughput:
+	= 20 Mbps (slowest bandwidth)
 
-    Average RTT:
-        h4 RTT avg = 160.993 ms
-        h1 RTT avg = 161.042 ms
+Average RTT:
+	h4 RTT avg = 160.993 ms
+	h1 RTT avg = 161.042 ms
 
+Measured throughput:
+h1 (server): received=55078 KB, rate=18.587808479223792 Mbps
+h4 (client): sent=55078 KB, rate=20.432367261766753 Mbps
 
-    Average throughput:
-    h1 (server):
-    received=55078 KB rate=18.587808479223792 Mbps
+Explanation:
+These results make sense. Our expectation was that RTT is determined by twice the amount of one-way delay, which is the sum 
+of delays over all links. The similar expected and average measured RTT show that this is true.
+Our expectation was that throughput is limitied by the slowest bandwidth, which was 20 Mbps on link 1. The similar expected
+and measured throughput also show this is true.
 
-    h4 (client):
-    sent=55078 KB rate=20.432367261766753 Mbps
-
-
-Q3:
+-----------------------------------------------
+Q3)
 
 Expected latency (regardless of # hosts):
     = 160 ms
@@ -91,8 +93,8 @@ Expected throughput:
         h9 result
         sent=52235 KB rate=6.943258286948575 Mbps
 
-
-Q4
+-----------------------------------------------
+Q4)
     Expected latencies:
         h1-h4: 160 ms
         h5-h6: 40 ms

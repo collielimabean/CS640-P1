@@ -1,3 +1,4 @@
+h1:
 root@mininet-vm:~/P1# ping -c 20 10.0.0.4
 PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=169 ms
@@ -25,8 +26,9 @@ PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
 20 packets transmitted, 20 received, 0% packet loss, time 19027ms
 rtt min/avg/max/mdev = 160.337/160.993/169.789/2.048 ms
 
+----------------------------------------------------
 
-
+h4:
 root@mininet-vm:~/P1# ping -c 20 10.0.0.1
 PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=169 ms

@@ -1,15 +1,18 @@
-h1:
-root@mininet-vm:~/P1# java Iperfer -c -h 10.0.0.4 -p 9000 -t 20
-sent=54551 KB rate=21.779019862261702 Mbps
-
-root@mininet-vm:~/P1# java Iperfer -s -p 9000
-received=55078 KB rate=18.587808479223792 Mbps
-
-
-h4:
+h4 (server):
 root@mininet-vm:~/P1# java Iperfer -s -p 9000
 received=54551 KB rate=18.606975356016033 Mbps
 
+h1 (client):
+root@mininet-vm:~/P1# java Iperfer -c -h 10.0.0.4 -p 9000 -t 20
+sent=54551 KB rate=21.779019862261702 Mbps
+
+----------------------------------------------------
+
+h1 (server):
+root@mininet-vm:~/P1# java Iperfer -s -p 9000
+received=55078 KB rate=18.587808479223792 Mbps
+
+h4 (client):
 root@mininet-vm:~/P1# java Iperfer -c -h 10.0.0.1 -p 9000 -t 20
 sent=55078 KB rate=20.432367261766753 Mbps
 
