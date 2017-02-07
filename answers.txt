@@ -92,49 +92,51 @@ Expected throughput:
 
         h9 result
         sent=52235 KB rate=6.943258286948575 Mbps
+		
+Explanation: These results make sense. Latency will not change due to multiple hosts, since RTT is measured from when a bit
+is sent out from the switch to when it's received. More hosts sending simply clogs the switch's buffer but does not affect 
+latency. Throughput is how much data can be sent "through the pipe", so if multiple hosts send through the "pipe", speeds
+will slow down proportionally to the number of hosts sending. This is shown for both two and three pairs hosts.
 
 -----------------------------------------------
 Q4)
-    Expected latencies:
-        h1-h4: 160 ms
-        h5-h6: 40 ms
+Expected latencies:
+	h1-h4: 160 ms
+	h5-h6: 40 ms
 
-        Reasoning:
-            The number of hosts shouldn't affect latency.
+	Reasoning:
+		The number of hosts shouldn't affect latency.
 
-    Expected throughputs:
-        h1-h4: 17.5 Mbps
-        h5-h6: 22.5 Mbps
+Expected throughputs:
+	h1-h4: 17.5 Mbps
+	h5-h6: 22.5 Mbps
 
-        Reasoning:
-            Note that switch 2 is a place of contention. At worst conditions, s2 can have an incoming
-            data rate of 45 Mbps, and a max outgoing 40 Mbps. In order to balance out, let's assume
-            the switch incurs speed reductions equally to each link. In other words, each link gets
-            a net 2.5 Mbps removed. 20 - 2.5 -> 17.5 for h1-h4, and 25 - 2.5 = 22.5 for h5-h6.
+	Reasoning:
+		Note that switch 2 is a place of contention. At worst conditions, s2 can have an incoming
+		data rate of 45 Mbps, and a max outgoing 40 Mbps. In order to balance out, let's assume
+		the switch incurs speed reductions equally to each link. In other words, each link gets
+		a net 2.5 Mbps removed. 20 - 2.5 -> 17.5 for h1-h4, and 25 - 2.5 = 22.5 for h5-h6.
 
-    Measured latencies:
-        h1-h4:
-        rtt avg = 161.165 ms
+Measured latencies:
+	h1-h4:
+	rtt avg = 161.165 ms
 
-        h5-h6
-        rtt avg = 41.336 ms
+	h5-h6
+	rtt avg = 41.336 ms
 
+Measured throughputs:
+	h1 result
+	sent=127016 KB rate=16.83808640031816 Mbps
 
-    Measured throughputs:
-        h1 result
-        sent=127016 KB rate=16.83808640031816 Mbps
+	h4 result
+	received=127016 KB rate=16.491300960789406 Mbps
 
-        h4 result
-        received=127016 KB rate=16.491300960789406 Mbps
+	h5 result
+	sent=160213 KB rate=21.23186509185482 Mbps
 
-        h5 result
-        sent=160213 KB rate=21.23186509185482 Mbps
+	h6 result
+	received=160213 KB rate=20.693004407562277 Mbps
 
-        h6 result
-        received=160213 KB rate=20.693004407562277 Mbps
- 
-    Conclusion:
-        The idea was right - there would be some reduction in throughput for both connections.
-        However, it appears there is a larger reduction in throughput than what was predicted.
- 
- 
+Explanation: The idea was right - there would be some reduction in throughput for both connections. However, it appears 
+there is a larger reduction in throughput than what was predicted.
+
